@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-slate-900 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Vision & Réflexes Pro - Évaluation de la Vue Gratuit</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Creepster&display=swap" rel="stylesheet">
+    <style>
+        .font-horror {
+            font-family: 'Creepster', cursive;
+        }
+        
+        /* Optical Illusion effect */
+        .illusion-bg {
+            background: radial-gradient(circle, #3b82f6 0%, #1e3a8a 50%, #0f172a 100%);
+            background-size: 200% 200%;
+            animation: pulse-bg 4s ease infinite;
+        }
+
+        @keyframes pulse-bg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Screamer Flash & Shake Effects */
+        @keyframes strobe {
+            0% { background-color: #ff0000; }
+            20% { background-color: #000000; }
+            40% { background-color: #ffffff; }
+            60% { background-color: #ff0000; }
+            80% { background-color: #000000; }
+            100% { background-color: #8b0000; }
+        }
+
+        @keyframes violent-shake {
+            0% { transform: translate(0, 0) scale(1.2) rotate(0deg); }
+            10% { transform: translate(-25px, 15px) scale(1.3) rotate(-5deg); }
+            20% { transform: translate(25px, -25px) scale(1.25) rotate(5deg); }
+            30% { transform: translate(-30px, 25px) scale(1.35) rotate(-3deg); }
+            40% { transform: translate(20px, -15px) scale(1.3) rotate(4deg); }
+            50% { transform: translate(-25px, 20px) scale(1.4) rotate(-6deg); }
+            60% { transform: translate(30px, 10px) scale(1.25) rotate(5deg); }
+            70% { transform: translate(-15px, -20px) scale(1.35) rotate(-4deg); }
+            80% { transform: translate(25px, 15px) scale(1.3) rotate(3deg); }
+            90% { transform: translate(-20px, -25px) scale(1.4) rotate(-5deg); }
+            100% { transform: translate(0, 0) scale(1.2) rotate(0deg); }
+        }
+
+        .screamer-active {
+            animation: strobe 0.1s infinite alternate;
+        }
+
+        .screamer-face {
+            animation: violent-shake 0.05s infinite;
+        }
+
+        /* Fake Optometry Chart Blur Transition */
+        .focus-target {
+            transition: filter 0.8s ease, transform 0.8s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="h-full font-sans antialiased selection:bg-blue-500 selection:text-white flex flex-col justify-between overflow-x-hidden">
+
+    <!-- HEADER / DEGUISEMENT -->
+    <header id="main-header" class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-10 transition-all duration-500">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/30">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-slate-100 text-lg leading-tight">OptiCheck HD™</h1>
+                    <p class="text-xs text-slate-400">Laboratoire National d'Optométrie Visuelle</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 text-xs bg-slate-800/80 text-emerald-400 px-3 py-1.5 rounded-full border border-emerald-500/20">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Test de précision v4.8 actif</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL (PAGE DE PIÈGE) -->
+    <main id="prank-container" class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 flex flex-col justify-center items-center my-auto transition-all duration-500">
+        
+        <!-- STEP 1: CONSIGNES & AUDIO CONSENT -->
+        <div id="step-intro" class="w-full bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-sm text-center">
+            <div class="inline-flex p-3 rounded-2xl bg-blue-500/10 text-blue-400 mb-4 border border-blue-500/20">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-3 text-white">Test Interactif de Perception Visuelle</h2>
+            <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto mb-6 leading-relaxed">
+                Ce test évalue votre acuité visuelle, votre perception des détails en mouvement et votre sensibilité aux micro-contrastes en moins de 30 secondes.
+            </p>
+
+            <div class="bg-slate-900/80 rounded-xl p-4 max-w-md mx-auto mb-6 text-left border border-slate-700/50 space-y-3">
+                <div class="flex items-start space-x-3 text-xs md:text-sm text-slate-300">
+                    <span class="bg-blue-600/30 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/30">1</span>
+                    <span>Rapprochez votre visage à environ <strong>25-30 cm</strong> de l'écran.</span>
+                </div>
+                <div class="flex items-start space-x-3 text-xs md:text-sm text-slate-300">
+                    <span class="bg-blue-600/30 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/30">2</span>
+                    <span>Fixez attentivement le centre de l'image qui va s'afficher.</span>
+                </div>
+                <div class="flex items-start space-x-3 text-xs md:text-sm text-slate-300">
+                    <span class="bg-blue-600/30 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/30">3</span>
+                    <span>Activez le son pour calibrer les fréquences d'évaluation acoustique.</span>
+                </div>
+            </div>
+
+            <button id="btn-start" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-lg rounded-xl shadow-lg shadow-blue-600/30 transition-all duration-200 transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-2 mx-auto">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>Démarrer l'Évaluation</span>
+            </button>
+        </div>
+
+        <!-- STEP 2: FAUX TEST DE VISION (L'ATTRAPE-NIGAUD) -->
+        <div id="step-test" class="hidden w-full bg-slate-800/60 border border-slate-700/60 rounded-2xl p-4 md:p-8 shadow-2xl backdrop-blur-sm text-center">
+            
+            <div class="flex justify-between items-center mb-4">
+                <span id="test-status" class="text-xs md:text-sm font-semibold uppercase tracking-wider text-blue-400">Étape 1/2 : Calibrage d'Optique Profonde</span>
+                <span id="test-timer" class="text-xs bg-slate-900 px-3 py-1 rounded-full text-amber-400 border border-amber-500/20 font-mono">Zoom : x1.0</span>
+            </div>
+
+            <div id="illusion-box" class="relative w-full h-72 md:h-96 rounded-xl overflow-hidden border-2 border-slate-600 illusion-bg flex items-center justify-center cursor-crosshair">
+                <!-- Overlay illusion optical pattern -->
+                <div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                
+                <!-- Target Element to focus on -->
+                <div id="focus-container" class="relative z-0 text-center transition-all duration-300">
+                    <div id="tiny-target" class="w-12 h-12 md:w-16 md:h-16 mx-auto rounded-full border-2 border-white/80 flex items-center justify-center bg-black/40 shadow-2xl backdrop-blur-md">
+                        <span id="target-char" class="text-xs md:text-sm font-bold text-white tracking-tighter">?</span>
+                    </div>
+                    <p id="target-instruction" class="text-xs md:text-sm text-slate-200 mt-3 font-medium bg-slate-950/70 px-4 py-1.5 rounded-full border border-slate-700 inline-block shadow">
+                        Regardez fixement le symbole au centre...
+                    </p>
+                </div>
+
+                <!-- Guidance Overlay -->
+                <div class="absolute bottom-3 left-0 right-0 text-center pointer-events-none">
+                    <p class="text-[11px] text-slate-300/80 bg-black/50 backdrop-blur-sm inline-block px-3 py-1 rounded-full">
+                        🔍 Rapprochez-vous le plus possible de l'écran pour discerner les détails
+                    </p>
+                </div>
+            </div>
+
+            <!-- Fake Controls -->
+            <div id="action-controls" class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <button id="btn-zoom" class="w-full sm:w-auto px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-sm font-semibold transition active:scale-95 flex items-center justify-center space-x-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                    <span>Affiner la Mise au Point</span>
+                </button>
+                <button id="btn-trigger-prank" class="w-full sm:w-auto px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-emerald-600/30 transition active:scale-95">
+                    Je vois le chiffre clairement
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER DEGUISE -->
+    <footer id="main-footer" class="border-t border-slate-800 bg-slate-950 py-4 text-center text-xs text-slate-500 transition-all duration-500">
+        <p>© 2026 OptiCheck Systems Inc. - Tous droits réservés. Test conforme ISO-8902 Vision Standard.</p>
+    </footer>
+
+    <!-- AUDIO ELEMENT POUR LE METAL PIPE CLANG -->
+    <audio id="metal-pipe-audio" preload="auto" src="https://www.myinstants.com/media/sounds/metal-pipe-clang.mp3"></audio>
+
+    <!-- FULLSCREEN SCREAMER CONTAINER (CACHÉ AU DÉPART) -->
+    <div id="screamer-overlay" class="fixed inset-0 z-50 hidden bg-black flex-col items-center justify-center overflow-hidden cursor-none select-none">
+        <!-- Canvas dynamique pour le visage effrayant -->
+        <canvas id="screamer-canvas" class="screamer-face w-full h-full max-w-screen-2xl object-contain"></canvas>
+    </div>
+
+    <!-- ÉCRAN DE REVELATION / FIN DE LA FARCE -->
+    <div id="reveal-screen" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center overflow-y-auto">
+        <div class="max-w-lg w-full bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
+
+            <div class="w-20 h-20 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner border border-amber-500/30 animate-bounce">
+                👻
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-2 font-horror tracking-wide text-red-500">
+                PIÉGÉ ! (PRANKED)
+            </h2>
+            
+            <p class="text-slate-300 mb-6 text-sm md:text-base leading-relaxed">
+                Pardon pour la frayeur ! C'était une simple blague interactive en HTML/JS. Respirez un bon coup, votre cœur va bien ! 😂
+            </p>
+
+            <div class="bg-slate-800/80 rounded-2xl p-4 mb-6 border border-slate-700 text-left space-y-2">
+                <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-700/60 pb-2">
+                    <span>Axe du cardio :</span>
+                    <span class="text-red-400 font-bold">140 BPM (Estime)</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-700/60 pb-2">
+                    <span>Niveau de sursaut :</span>
+                    <span class="text-amber-400 font-bold">Maximale (10/10)</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                    <span>Statut :</span>
+                    <span class="text-emerald-400 font-bold">En sécurité ! 🎉</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button id="btn-replay" class="flex-1 py-3 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl text-sm transition border border-slate-700">
+                    🔄 Recommencer
+                </button>
+                <button id="btn-share" class="flex-1 py-3 px-4 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white font-bold rounded-xl text-sm shadow-lg shadow-red-600/30 transition">
+                    🔗 Piéger un ami
+                </button>
+            </div>
+            
+            <!-- Toast de confirmation de copie -->
+            <div id="copy-toast" class="opacity-0 transition-opacity duration-300 mt-4 text-xs text-emerald-400 font-medium">
+                Lien copié dans le presse-papier ! Envoyez-le à votre victime.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DU SCREAMER & AUDIO SYNTH -->
+    <script>
+        // Web Audio API Synthesizer (Complément strident/aigu pour accentuer le sursaut)
+        class ScreamerAudio {
+            constructor() {
+                this.ctx = null;
+            }
+
+            init() {
+                if (!this.ctx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    this.ctx = new AudioContext();
+                }
+                if (this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+            }
+
+            playHighScream() {
+                this.init();
+                const now = this.ctx.currentTime;
+                const duration = 2.0;
+
+                // Screech aigu métallique en complément du sample
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(2500, now);
+                osc.frequency.exponentialRampToValueAtTime(800, now + duration);
+
+                gain.gain.setValueAtTime(1.0, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                osc.start(now);
+                osc.stop(now + duration);
+            }
+        }
+
+        // Générateur de Visage Effrayant sur Canvas (Procédural/Horror Art)
+        function drawHorrorFace(canvas) {
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width = window.innerWidth;
+            const h = canvas.height = window.innerHeight;
+
+            // Fond sombre avec vignettage sanglant
+            const bgGrad = ctx.createRadialGradient(w/2, h/2, 50, w/2, h/2, w/1.2);
+            bgGrad.addColorStop(0, '#4a0000');
+            bgGrad.addColorStop(0.5, '#1a0000');
+            bgGrad.addColorStop(1, '#000000');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, w, h);
+
+            const cx = w / 2;
+            const cy = h / 2;
+
+            // Crâne / Visage déformé
+            ctx.save();
+            ctx.beginPath();
+            ctx.ellipse(cx, cy, 220, 320, 0, 0, Math.PI * 2);
+            ctx.fillStyle = '#e5e7eb';
+            ctx.shadowColor = '#ff0000';
+            ctx.shadowBlur = 60;
+            ctx.fill();
+            ctx.restore();
+
+            // Yeux noirs béants
+            const drawEye = (x, y) => {
+                ctx.beginPath();
+                ctx.ellipse(x, y, 65, 85, Math.PI / 12, 0, Math.PI * 2);
+                ctx.fillStyle = '#000000';
+                ctx.fill();
+
+                // Pupille rouge démoniaque
+                ctx.beginPath();
+                ctx.arc(x + (Math.random() * 10 - 5), y + (Math.random() * 10 - 5), 10, 0, Math.PI * 2);
+                ctx.fillStyle = '#ff0000';
+                ctx.shadowColor = '#ff0000';
+                ctx.shadowBlur = 25;
+                ctx.fill();
+            };
+
+            drawEye(cx - 90, cy - 60);
+            drawEye(cx + 90, cy - 60);
+
+            // Bouche hurlante immense
+            ctx.beginPath();
+            ctx.ellipse(cx, cy + 120, 95, 140, 0, 0, Math.PI * 2);
+            ctx.fillStyle = '#000000';
+            ctx.fill();
+
+            // Dents acérées
+            ctx.fillStyle = '#ffffff';
+            const teethCount = 14;
+            for (let i = 0; i < teethCount; i++) {
+                const tx = (cx - 80) + (i * 12);
+                const ty = cy + 20;
+                ctx.beginPath();
+                ctx.moveTo(tx, ty);
+                ctx.lineTo(tx + 6, ty + 35 + Math.random() * 20);
+                ctx.lineTo(tx + 12, ty);
+                ctx.closePath();
+                ctx.fill();
+
+                const bty = cy + 220;
+                ctx.beginPath();
+                ctx.moveTo(tx, bty);
+                ctx.lineTo(tx + 6, bty - 35 - Math.random() * 20);
+                ctx.lineTo(tx + 12, bty);
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+
+        // DOM Logic & Flow Management
+        document.addEventListener('DOMContentLoaded', () => {
+            const audioSynth = new ScreamerAudio();
+            const metalPipeAudio = document.getElementById('metal-pipe-audio');
+            
+            // Elements
+            const btnStart = document.getElementById('btn-start');
+            const stepIntro = document.getElementById('step-intro');
+            const stepTest = document.getElementById('step-test');
+            const btnZoom = document.getElementById('btn-zoom');
+            const btnTriggerPrank = document.getElementById('btn-trigger-prank');
+            const targetChar = document.getElementById('target-char');
+            const focusContainer = document.getElementById('focus-container');
+            const targetInstruction = document.getElementById('target-instruction');
+            const testTimerDisplay = document.getElementById('test-timer');
+            const screamerOverlay = document.getElementById('screamer-overlay');
+            const screamerCanvas = document.getElementById('screamer-canvas');
+            const revealScreen = document.getElementById('reveal-screen');
+            const btnReplay = document.getElementById('btn-replay');
+            const btnShare = document.getElementById('btn-share');
+            const copyToast = document.getElementById('copy-toast');
+
+            let currentZoom = 1.0;
+            let prankTriggered = false;
+            let autoTimer = null;
+            let countdown = 10;
+
+            // Démarrage du test
+            btnStart.addEventListener('click', () => {
+                audioSynth.init(); // Débloquer l'audio
+                metalPipeAudio.load(); // Pré-charger le son du Metal Pipe
+                
+                stepIntro.classList.add('hidden');
+                stepTest.classList.remove('hidden');
+                
+                // Activer le mode plein écran
+                requestFullscreenMode();
+
+                // Lancer le compte à rebours de 10 secondes pour le screamer
+                startConcentrationTimer();
+            });
+
+            function startConcentrationTimer() {
+                testTimerDisplay.textContent = `Temps de fixation : ${countdown}s`;
+                
+                autoTimer = setInterval(() => {
+                    countdown--;
+                    testTimerDisplay.textContent = `Temps de fixation : ${countdown}s`;
+                    
+                    if (countdown <= 3) {
+                        targetInstruction.textContent = "🔍 Ne clignez plus des yeux, analyse en cours...";
+                        targetInstruction.classList.add('text-red-400');
+                    }
+
+                    if (countdown <= 0) {
+                        clearInterval(autoTimer);
+                        triggerScreamer();
+                    }
+                }, 1000);
+            }
+
+            // Zoom ou interaction manuelle
+            btnZoom.addEventListener('click', () => {
+                currentZoom += 0.3;
+                focusContainer.style.transform = `scale(${currentZoom})`;
+            });
+
+            btnTriggerPrank.addEventListener('click', () => {
+                if (autoTimer) clearInterval(autoTimer);
+                triggerScreamer();
+            });
+
+            document.getElementById('illusion-box').addEventListener('click', () => {
+                if (autoTimer) clearInterval(autoTimer);
+                triggerScreamer();
+            });
+
+            // Déclencheur du Screamer
+            function triggerScreamer() {
+                if (prankTriggered) return;
+                prankTriggered = true;
+
+                // Tenter à nouveau le plein écran au cas où
+                requestFullscreenMode();
+
+                // Dessiner le visage effrayant
+                drawHorrorFace(screamerCanvas);
+
+                // Afficher le screamer plein écran
+                screamerOverlay.classList.remove('hidden');
+                screamerOverlay.classList.add('flex', 'screamer-active');
+
+                // Jouer le son du Metal Pipe à haut volume + synthé strident
+                try {
+                    metalPipeAudio.volume = 1.0;
+                    metalPipeAudio.currentTime = 0;
+                    metalPipeAudio.play();
+                } catch (e) {
+                    console.log('Audio playback prevented', e);
+                }
+                audioSynth.playHighScream();
+
+                // Vibration mobile si disponible
+                if ('vibrate' in navigator) {
+                    navigator.vibrate([400, 100, 400, 100, 600]);
+                }
+
+                // Masquer après 2.2 secondes et passer à la fin
+                setTimeout(() => {
+                    screamerOverlay.classList.add('hidden');
+                    screamerOverlay.classList.remove('screamer-active');
+                    revealScreen.classList.remove('hidden');
+                    revealScreen.classList.add('flex');
+                    
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen().catch(() => {});
+                    }
+                }, 2200);
+            }
+
+            function requestFullscreenMode() {
+                const docEl = document.documentElement;
+                if (docEl.requestFullscreen) {
+                    docEl.requestFullscreen().catch(() => {});
+                } else if (docEl.webkitRequestFullscreen) {
+                    docEl.webkitRequestFullscreen();
+                }
+            }
+
+            btnReplay.addEventListener('click', () => {
+                location.reload();
+            });
+
+            btnShare.addEventListener('click', () => {
+                const currentUrl = window.location.href;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(currentUrl).then(() => showCopyToast()).catch(() => fallbackCopyText(currentUrl));
+                } else {
+                    fallbackCopyText(currentUrl);
+                }
+            });
+
+            function fallbackCopyText(text) {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopyToast();
+            }
+
+            function showCopyToast() {
+                copyToast.classList.remove('opacity-0');
+                copyToast.classList.add('opacity-100');
+                setTimeout(() => {
+                    copyToast.classList.remove('opacity-100');
+                    copyToast.classList.add('opacity-0');
+                }, 3000);
+            }
+
+            window.addEventListener('resize', () => {
+                if (!screamerOverlay.classList.contains('hidden')) {
+                    drawHorrorFace(screamerCanvas);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
